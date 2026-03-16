@@ -51,14 +51,29 @@ The AI helped me to design tests since this gave good function names which helpe
 ## 4. What did you learn about Streamlit and state?
 
 - In your own words, explain why the secret number kept changing in the original app.
+
+The secret number kept changing since we have a random built in function which generates a random number between 0 to 100 each time the new game starts.
+
 - How would you explain Streamlit "reruns" and session state to a friend who has never used Streamlit?
+
+When running Streamlit when you click a button this would rerun the code and show a new display. Everything basically resets. 
+
 - What change did you make that finally gave the game a stable secret number?
 
+I made sure that the secret number only changed if the user clicks new game. Otherwise the user has a certain amount of guesses before it shows that they failed to guess the secret word.
 ---
 
 ## 5. Looking ahead: your developer habits
 
 - What is one habit or strategy from this project that you want to reuse in future labs or projects?
   - This could be a testing habit, a prompting strategy, or a way you used Git.
+
+I definitely would tell copilot to fix any bugs and write test cases for my projects as before I relied on copy paste into claude or perplexity to find errors in code.
+
 - What is one thing you would do differently next time you work with AI on a coding task?
+
+I will tell the AI to explain why it gave me the edited code and what the code is intended to do so that way I know whether the AI change makes sense or not since for this assignment it just gave me changes without really explaining what the change is doing.
+
 - In one or two sentences, describe how this project changed the way you think about AI generated code.
+
+I think AI generated code is benefical to fix any bugs you have with the project as this is much easier than manually having to search your code for any errors. However I would not use AI generated code for the project itself since the AI wouldn't fully be able to develop code that fits the standard.
