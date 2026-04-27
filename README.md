@@ -7,6 +7,9 @@ This app is the Game Glitch Investigator which runs on Streamlit and is a number
 ## Architecture Overview
 
 applied-AI-system-gameGlitch/
+|-assets/
+   |-Mermaid_Diagram.png
+   |-Mermaid_Diagram2.png
 |-tests/
    |-test_game_logic.py
    |-test_logic_utils.py
