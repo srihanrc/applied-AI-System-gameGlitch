@@ -77,3 +77,7 @@ This project has helped me learn that AI is a benefical tool to debug and find e
 
 https://github.com/srihanrc/applied-AI-System-gameGlitch
 
+
+## Video demo
+https://www.loom.com/share/80087260ed834104a3d987228877d2f2
+
