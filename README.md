@@ -20,16 +20,6 @@ applied-AI-system-gameGlitch/
 |-reflection.md
 |-requirements.txt
 
-
-## 🚨 The Situation
-
-You asked an AI to build a simple "Number Guessing Game" using Streamlit.
-It wrote the code, ran away, and now the game is unplayable. 
-
-- You can't win.
-- The hints lie to you.
-- The secret number seems to have commitment issues.
-
 ## 🛠️ Setup Instructions
 
 1. Clone the repo, open terminal and run https://github.com/yourusername/applied-AI-System-gameGlitch.git
