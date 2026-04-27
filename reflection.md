@@ -1,79 +1,10 @@
 # 💭 Reflection: Game Glitch Investigator
-
-Answer each question in 3 to 5 sentences. Be specific and honest about what actually happened while you worked. This is about your process, not trying to sound perfect.
-
-## 1. What was broken when you started?
-
-- What did the game look like the first time you ran it?
-    
-     It showed the developer debug info which gave the secret number. It also shows the permanent score of 45. 
-
-- List at least two concrete bugs you noticed at the start.   
-  (for example: "the secret number kept changing" or "the hints were backwards").
-
-  The hints were messed up as when the secret number was higher than the users guess the hint would say go lower instead of go higher and the same is vice versa. What should happen is if my guess is lower than the secret number, the hint should tell me go higher and vice versa.
-   Also another bug that I found is when I submit the right guess it tells me to click new game to play again but when I click it the button doesn't function and I can't play a new game. What should happen is when I click the new game button, I should be able to enter my guess and play again.
-
 ---
 
-## 2. How did you use AI as a teammate?
+## Debugging and testing your fixes
 
-- Which AI tools did you use on this project (for example: ChatGPT, Gemini, Copilot)?
+At first I only had 14 out of 28 cases pass because I had missed context in 2 of my functions. After implementing the code for those functions the accuracy drastically improved and I had 28 out of 28 test cases pass with also no errors in streamlit app. 
 
-      I used Github Copilot for this project.
+## Reflection
 
-- Give one example of an AI suggestion that was correct (including what the AI suggested and how you verified the result).
-
-      The AI suggestion was correct on the changes it made for the bug on hints where it switched the go higher with go lower and vice versa.
-
-- Give one example of an AI suggestion that was incorrect or misleading (including what the AI suggested and how you verified the result).
-
-  I noticed that the attempts wouldn't go down from 8 to 7 the first time when I guessed an incorrect number. I told AI to fix the bug in app.py to make the attempts go down but it made changes in test_game_logic.py as well which I knew didn't make sense. 
----
-
-## 3. Debugging and testing your fixes
-
-- How did you decide whether a bug was really fixed?
-
-  I would rerun my program and test the game based on that bug to see if it works the way it should. 
-
-- Describe at least one test you ran (manual or using pytest)  
-  and what it showed you about your code.
-
-  One test I ran using pytest was the test guess too low and test guess too high. This showed some changes for the code and gave me the option to keep or undo the changes. It then told me to run the cmd.EXE command within the gameglitch-investigator folder. 
-
-- Did AI help you design or understand any tests? How?
-
-The AI helped me to design tests since this gave good function names which helped me understand what the test case was for and it showed the changes it made from the previous code to current. AI however didn't help me understand any tests since it just showed me the changes but never explained why the changes were being made. 
-
----
-
-## 4. What did you learn about Streamlit and state?
-
-- In your own words, explain why the secret number kept changing in the original app.
-
-The secret number kept changing since we have a random built in function which generates a random number between 0 to 100 each time the new game starts.
-
-- How would you explain Streamlit "reruns" and session state to a friend who has never used Streamlit?
-
-When running Streamlit when you click a button this would rerun the code and show a new display. Everything basically resets. 
-
-- What change did you make that finally gave the game a stable secret number?
-
-I made sure that the secret number only changed if the user clicks new game. Otherwise the user has a certain amount of guesses before it shows that they failed to guess the secret word.
----
-
-## 5. Looking ahead: your developer habits
-
-- What is one habit or strategy from this project that you want to reuse in future labs or projects?
-  - This could be a testing habit, a prompting strategy, or a way you used Git.
-
-I definitely would tell copilot to fix any bugs and write test cases for my projects as before I relied on copy paste into claude or perplexity to find errors in code.
-
-- What is one thing you would do differently next time you work with AI on a coding task?
-
-I will tell the AI to explain why it gave me the edited code and what the code is intended to do so that way I know whether the AI change makes sense or not since for this assignment it just gave me changes without really explaining what the change is doing.
-
-- In one or two sentences, describe how this project changed the way you think about AI generated code.
-
-I think AI generated code is benefical to fix any bugs you have with the project as this is much easier than manually having to search your code for any errors. However I would not use AI generated code for the project itself since the AI wouldn't fully be able to develop code that fits the standard.
+Some limitations and biases of this system is that this can only handle integer guesses within the guessing range and it's not able to handle edge cases like non-numeric input or numbers outside guessing range. AI could be misused if someone just copied code and put it as production ready without verifying to see if the code actually works. The previous version had errors where the hints were backwards so to avoid this I would ask the AI assistant to fix these bugs and making sure I review the changes before deploying. When testing the AI's reliabilty, I was surprised how AI had confidently suggested bug fixes which led to other bugs for example AI recommending a scoring formula which didn't account for negative values in which the pytest case failed because of that. AI was helpful when it gave me an idea as to how to write my agent workflow code and also gave me good test cases to make sure my functions were working well. This was flawed because once the user won the game it was stuck in the Congrats you win state so the AI helper wasn't giving hints at the start of the next game.

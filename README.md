@@ -18,8 +18,6 @@ applied-AI-system-gameGlitch/
 |-requirements.txt
 
 
-
-
 ## 🚨 The Situation
 
 You asked an AI to build a simple "Number Guessing Game" using Streamlit.
