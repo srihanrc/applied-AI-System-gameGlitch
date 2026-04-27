@@ -73,4 +73,7 @@ I separated game logic into logic_utils.py since it easier to test and debug cod
 
 This project has helped me learn that AI is a benefical tool to debug and find errors in the code. This however can't replace humans critical thinking. When I first ran this game I couldn't guess the secret number because the hints were backwards in which I was guessing numbers that weren't even in the range of the secret number. The biggest lesson is about being able to trust AI because AI can write complex code fast but it is our job to ensure the code is correct and works the way you want it to. I also know that I need to be able to give full context and details to the AI about what I am asking for so the AI can perform the right steps.
 
+## Repo 
+
+https://github.com/srihanrc/applied-AI-System-gameGlitch
 
