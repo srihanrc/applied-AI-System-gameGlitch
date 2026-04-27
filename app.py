@@ -1,6 +1,6 @@
 import random
 import streamlit as st
-from logic_utils import check_guess
+from logic_utils import (check_guess, ai_strategy_helper, get_range_for_difficulty, parse_guess, update_score)
 
 def get_range_for_difficulty(difficulty: str):
     if difficulty == "Easy":
@@ -8,7 +8,7 @@ def get_range_for_difficulty(difficulty: str):
     if difficulty == "Normal":
         return 1, 100
     if difficulty == "Hard":
-        return 1, 50
+        return 1, 500
     return 1, 100
 
 
@@ -50,7 +50,6 @@ def update_score(current_score: int, outcome: str, attempt_number: int):
 st.set_page_config(page_title="Glitchy Guesser", page_icon="🎮")
 
 st.title("🎮 Game Glitch Investigator")
-st.caption("An AI-generated guessing game. Something is off.")
 
 st.sidebar.header("Settings")
 
@@ -63,7 +62,7 @@ difficulty = st.sidebar.selectbox(
 attempt_limit_map = {
     "Easy": 6,
     "Normal": 8,
-    "Hard": 5,
+    "Hard": 10,
 }
 attempt_limit = attempt_limit_map[difficulty]
 
@@ -90,16 +89,10 @@ if "history" not in st.session_state:
 st.subheader("Make a guess")
 
 st.info(
-    f"Guess a number between 1 and 100. "
+    f"Guess a number between {low} and {high}. "
     f"Attempts left: {attempt_limit - st.session_state.attempts}"
 )
 
-with st.expander("Developer Debug Info"):
-    st.write("Secret:", st.session_state.secret)
-    st.write("Attempts left:", attempt_limit - st.session_state.attempts)
-    st.write("Score:", st.session_state.score)
-    st.write("Difficulty:", difficulty)
-    st.write("History:", st.session_state.history)
 
 raw_guess = st.text_input(
     "Enter your guess:",
@@ -116,7 +109,8 @@ with col3:
 
 if new_game:
     st.session_state.attempts = 0
-    st.session_state.secret = random.randint(1, 100)
+    st.session_state.history = []
+    st.session_state.secret = random.randint(low, high)
     st.session_state.status = "playing"
     st.success("New game started.")
     st.rerun()
@@ -133,21 +127,27 @@ if submit:
 
     ok, guess_int, err = parse_guess(raw_guess)
 
+    outcome, message = check_guess(guess_int, st.session_state.secret)
     if not ok:
         st.session_state.history.append(raw_guess)
         st.error(err)
     else:
-        st.session_state.history.append(guess_int)
+        st.session_state.history.append({
+            "guess": guess_int,
+            "outcome": outcome,
+        })
 
         if st.session_state.attempts % 2 == 0:
             secret = str(st.session_state.secret)
         else:
             secret = st.session_state.secret
 
-        outcome, message = check_guess(guess_int, secret)
 
         if show_hint:
             st.warning(message)
+        
+        ai_hint = ai_strategy_helper(st.session_state.history, low, high)
+        st.info(ai_hint)
 
         st.session_state.score = update_score(
             current_score=st.session_state.score,
