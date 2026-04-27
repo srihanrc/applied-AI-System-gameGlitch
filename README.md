@@ -81,3 +81,8 @@ https://github.com/srihanrc/applied-AI-System-gameGlitch
 ## Video demo
 https://www.loom.com/share/80087260ed834104a3d987228877d2f2
 
+## Video Explaining my system and what I learned
+https://www.loom.com/share/80087260ed834104a3d987228877d2f2
+
+- I had to make 2 videos as loom only allowed 5 minutes for each recording which wasn't enough time for my presentation.
+
